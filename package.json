@@ -1,18 +1,28 @@
 {
   "name": "lcid-ts",
-  "version": "0.0.0",
+  "version": "0.1.0",
+  "description": "TypeScript implementation of lcid, originally in order to make it run on Cloudflare Workers.",
   "private": true,
+  "readme": "README.md",
   "scripts": {
     "deploy": "wrangler deploy",
     "dev": "wrangler dev",
-    "start": "wrangler dev",
-    "test": "vitest"
+    "start": "wrangler dev"
   },
   "devDependencies": {
     "@cloudflare/vitest-pool-workers": "^0.1.0",
     "@cloudflare/workers-types": "^4.20240320.1",
+    "@stylistic/eslint-plugin": "^1.7.0",
+    "@typescript-eslint/eslint-plugin": "^7.4.0",
+    "@typescript-eslint/parser": "^7.4.0",
+    "eslint": "^8.57.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.29.1",
     "typescript": "^5.0.4",
-    "vitest": "1.3.0",
     "wrangler": "^3.0.0"
+  },
+  "dependencies": {
+    "@tsndr/cloudflare-worker-router": "^3.2.4",
+    "workers-logger": "^0.2.0"
   }
 }
