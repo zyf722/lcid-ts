@@ -36,10 +36,17 @@ Then you should edit [wrangler.toml](./wrangler.toml) based on the [example](./w
 - `bindings`: The KV namespace binding for the Worker to store the problems.
 - `id`: The ID of the KV namespace.
 
-After that, you need to login to your Cloudflare account and set up the secrets:
+After that, you need to login to your Cloudflare account, publish the Worker and create the KV namespace:
 
 ```bash
 npx wrangler login
+npx wrangler publish
+npx wrangler kv:namespace create <namespace_name>
+```
+
+You also need to set up the secrets to make the crawler work:
+
+```bash
 npx wrangler secret put LC_CF_CLEARANCE
 npx wrangler secret put LC_CSRFTOKEN
 ```
@@ -54,6 +61,6 @@ npm run deploy
 
 > [!NOTE]
 >
-> If this is your first time deploying a Worker, you may want to manually add the `problem_json` entry to your KV namespace in the Cloudflare dashboard, as the Worker will only update it automatically after the first cron job.
+> If this is your first time deploying the Worker, you may want to manually add the `problem_json` entry to your KV namespace in the Cloudflare dashboard, as the Worker will only update it automatically after the first cron job.
 
 Check [real-time logs](https://developers.cloudflare.com/workers/observability/logging/real-time-logs/) to see if the Worker is running correctly.

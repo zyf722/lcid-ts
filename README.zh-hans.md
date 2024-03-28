@@ -36,10 +36,17 @@ npm install
 - `bindings`：Worker 存储问题的 KV 命名空间绑定。
 - `id`：KV 命名空间的 ID。
 
-之后，你需要登录到你的 Cloudflare 账户并设置 Secrets：
+之后，你需要登录到你的 Cloudflare 账户、发布 Worker 并创建 KV 命名空间：
 
 ```bash
 npx wrangler login
+npx wrangler publish
+npx wrangler kv:namespace create <namespace_name>
+```
+
+你还需要设置 secrets 以使爬虫正常工作：
+
+```bash、
 npx wrangler secret put LC_CF_CLEARANCE
 npx wrangler secret put LC_CSRFTOKEN
 ```
@@ -54,6 +61,6 @@ npm run deploy
 
 > [!NOTE]
 >
-> 如果这是你第一次部署 Worker，你可能需要手动在 Cloudflare 仪表板中添加 `problem_json` 条目到你的 KV 命名空间使其正常工作，因为 Worker 只会在第一次定时任务后自动更新它。
+> 如果这是你第一次部署该 Worker，你可能需要手动在 Cloudflare 仪表板中添加 `problem_json` 条目到你的 KV 命名空间使其正常工作，因为 Worker 只会在第一次定时任务后自动更新它。
 
 检查 [实时日志](https://developers.cloudflare.com/workers/observability/logging/real-time-logs/) 以查看 Worker 是否正在正确运行。
