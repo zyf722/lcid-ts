@@ -1,10 +1,10 @@
 **English** | [简体中文](README.zh-hans.md)
 
-# LCiD-TS
+# LCid-TS
 
 > [!NOTE]
 >
-> This is a TypeScript implementation of [LCiD](https://github.com/bunnyxt/lcid), in order to make it run on Cloudflare Workers.
+> This is a TypeScript implementation of [LCid](https://github.com/bunnyxt/lcid), in order to make it run on Cloudflare Workers.
 
 ## Introduction
 
@@ -16,7 +16,7 @@ Here's an introduction from the original project's README:
 > - Redirect to LeetCode problem page with problem id in the URL path via backend.
 > - Support both LeetCode [global site](https://leetcode.com/problemset/all/) and [China site](https://leetcode-cn.com/problemset/all/) redirect.
 
-LCiD-TS uses Cloudflare Workers to provide the same functionality:
+LCid-TS uses Cloudflare Workers to provide the same functionality:
 - A cron-scheduled job fetches all LeetCode problems and stores all problem as a JSON string into a [Cloudflare KV](https://developers.cloudflare.com/kv/) namespace.
   - Due to the request limitation of Cloudflare Workers, the problems are stored in a "complete" JSON string, instead of saving them as individual KV pairs.
 - Each time a request is made to the Worker, it fetches the problem list from the KV namespace and redirects the user to the corresponding LeetCode problem page.

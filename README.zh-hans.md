@@ -1,22 +1,22 @@
 [English](README.md) | **简体中文**
 
-# LCiD-TS
+# LCid-TS
 
 > [!NOTE]
 >
-> 这是 [LCiD](https://github.com/bunnyxt/lcid) 项目的 TypeScript 实现，旨在使其在 Cloudflare Workers 上运行。
+> 这是 [LCid](https://github.com/bunnyxt/lcid) 项目的 TypeScript 实现，旨在使其在 Cloudflare Workers 上运行。
 
 ## 介绍
 
 以下介绍部分来自于原项目 README：
 
-> 这个名为 LCiD 的简单项目，提供了直接通过 id 访问 LeetCode 问题的功能。特性：
+> 这个名为 LCid 的简单项目，提供了直接通过 id 访问 LeetCode 问题的功能。特性：
 >
 > - 通过爬虫获取所有 LeetCode 问题。
 > - 通过后端，使用 URL 路径中的问题 id 重定向到 LeetCode 问题页面。
 > - 支持重定向到 LeetCode [全球站点](https://leetcode.com/problemset/all/) 和 [中国站点](https://leetcode-cn.com/problemset/all/)。
 
-LCiD-TS 使用 Cloudflare Workers 提供相同的功能：
+LCid-TS 使用 Cloudflare Workers 提供相同的功能：
 - 一个定时任务获取所有 LeetCode 问题，并将所有问题作为 JSON 字符串存储到 [Cloudflare KV](https://developers.cloudflare.com/kv/) 命名空间。
   - 由于 Cloudflare Workers 的请求限制，问题被存储为一个 "完整" 的 JSON 字符串，而不是将它们保存为单独的 KV 对。
 - 每次向 Worker 发送请求时，它都会从 KV 命名空间获取问题列表，并将用户重定向到相应的 LeetCode 问题页面。
