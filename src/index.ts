@@ -54,7 +54,7 @@ router.get("/cn/:problem_id", async ({ req, env }) => {
     return Response.redirect(`https://leetcode-cn.com/problems/${problem.titleSlug}/`);
 });
 
-router.get("/info", async ({ env }) => {
+router.get("/info/all", async ({ env }) => {
     const problemJSON = await loadProblemJSON(env);
     if (isServerError(problemJSON)) {
         return new Response(JSON.stringify(problemJSON), { status: problemJSON.code });
@@ -79,7 +79,6 @@ router.get("/info/:problem_id", async ({ req, env }) => {
 });
 
 // Problems Fetching & Updating to KV
-
 interface Question {
     acRate: number;
     difficulty: string;
