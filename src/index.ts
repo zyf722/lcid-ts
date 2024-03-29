@@ -1,33 +1,6 @@
 import { Router } from "@tsndr/cloudflare-worker-router";
+import { Logger } from "./logger";
 
-type ConsoleLevel = "log" | "info" | "error" | "warn";
-class Logger {
-    name: string;
-
-    constructor(name: string) {
-        this.name = name;
-    }
-
-    format(message: string, level: ConsoleLevel): void {
-        console[level](`[${level}] ${this.name}: ${message}`);
-    }
-
-    debug(message: string): void {
-        this.format(message, "log");
-    }
-
-    info(message: string): void {
-        this.format(message, "info");
-    }
-
-    error(message: string): void {
-        this.format(message, "error");
-    }
-
-    warn(message: string): void {
-        this.format(message, "warn");
-    }
-}
 const log = new Logger("LCID");	
 
 const router = new Router<Env>();
